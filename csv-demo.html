@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Connection Demo - Stretch-Well</title>
+    <style>
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: #0A99AB;
+        }
+        .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: #0A99AB;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+        }
+        button:hover {
+            background-color: #088596;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        .steps {
+            background-color: #f0f8ff;
+            padding: 15px;
+            border-left: 4px solid #0A99AB;
+            margin-bottom: 20px;
+        }
+        .error {
+            color: #d9534f;
+            padding: 10px;
+            background-color: #ffeeee;
+            border-radius: 4px;
+            display: none;
+        }
+        .app-link {
+            display: block;
+            text-align: center;
+            margin: 30px auto;
+            padding: 12px 24px;
+            background-color: #0A99AB;
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(10, 153, 171, 0.3);
+            transition: all 0.3s ease;
+            width: fit-content;
+        }
+        .app-link:hover {
+            background-color: #088596;
+            box-shadow: 0 6px 16px rgba(10, 153, 171, 0.4);
+            transform: translateY(-2px);
+        }
+        .data-flow-diagram {
+            margin: 30px 0;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .data-flow-diagram img {
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>CSV Database Connection Demo</h1>
+    
+    <div class="card">
+        <h2>How Your App Uses CSV Data</h2>
+        <p>This demo shows how your Stretch-Well app connects to CSV files as a simple database system. The data flows through these steps:</p>
+        
+        <div class="data-flow-diagram">
+            <pre style="text-align: center; line-height: 1.8;">
+┌─────────────┐      ┌─────────────┐      ┌─────────────┐      ┌─────────────┐
+│   CSV Files  │ ───> │  CSV Utils  │ ───> │ Data Service│ ───> │ Application │
+│ (data/*.csv) │      │(csv-utils.js)│      │(data-service.js)│  │  (UI Layer) │
+└─────────────┘      └─────────────┘      └─────────────┘      └─────────────┘
+    Storage           Data Loading        Business Logic       User Interface
+</pre>
+        </div>
+        
+        <div class="steps">
+            <ol>
+                <li>CSV Files in the <code>/data</code> folder store structured data for exercises, stretches and recommendations</li>
+                <li>The CSV Utils module loads and parses these files into JavaScript objects</li>
+                <li>The Data Service adds business logic like filtering and recommendations</li>
+                <li>The UI layer displays personalized content to users</li>
+            </ol>
+        </div>
+        
+        <a href="index.html" class="app-link">Go to Stretch-Well App</a>
+        
+        <div id="error-message" class="error"></div>
+        
+        <div>
+            <button id="load-exercises">Load Exercises</button>
+            <button id="load-stretches">Load Stretches</button>
+            <button id="load-recommendations">Load Recommendations</button>
+        </div>
+    </div>
+    
+    <div class="card">
+        <h2>Data Preview</h2>
+        <div id="data-container">
+            <p>Click a button above to load data from CSV files.</p>
+        </div>
+    </div>
+    
+    <div class="card">
+        <h2>Personalized Recommendations Demo</h2>
+        <p>Let's simulate what happens after a user completes the questionnaire:</p>
+        
+        <div>
+            <button id="simulate-questionnaire">Simulate Questionnaire Completion</button>
+            <button id="load-personalized">Load Personalized Recommendations</button>
+        </div>
+        
+        <div id="recommendations-container" style="margin-top: 20px;">
+            <p>Click buttons above to test the recommendation engine.</p>
+        </div>
+    </div>
+
+    <script type="module">
+        import { loadExercises, loadStretches, loadRecommendations, 
+                 saveQuestionnaireData, getPersonalizedRecommendations } from './js/data-service.js';
+        
+        // DOM elements
+        const dataContainer = document.getElementById('data-container');
+        const recommendationsContainer = document.getElementById('recommendations-container');
+        const errorMessage = document.getElementById('error-message');
+        
+        // Loading exercises from CSV
+        document.getElementById('load-exercises').addEventListener('click', async () => {
+            try {
+                dataContainer.innerHTML = '<p>Loading exercises data...</p>';
+                const exercises = await loadExercises();
+                displayDataTable(exercises, 'Exercises');
+            } catch (error) {
+                showError('Error loading exercises: ' + error.message);
+            }
+        });
+        
+        // Loading stretches from CSV
+        document.getElementById('load-stretches').addEventListener('click', async () => {
+            try {
+                dataContainer.innerHTML = '<p>Loading stretches data...</p>';
+                const stretches = await loadStretches();
+                displayDataTable(stretches, 'Stretches');
+            } catch (error) {
+                showError('Error loading stretches: ' + error.message);
+            }
+        });
+        
+        // Loading recommendations from CSV
+        document.getElementById('load-recommendations').addEventListener('click', async () => {
+            try {
+                dataContainer.innerHTML = '<p>Loading recommendations data...</p>';
+                const recommendations = await loadRecommendations();
+                displayDataTable(recommendations, 'Recommendations');
+            } catch (error) {
+                showError('Error loading recommendations: ' + error.message);
+            }
+        });
+        
+        // Simulate questionnaire completion
+        document.getElementById('simulate-questionnaire').addEventListener('click', async () => {
+            try {
+                // Sample user preferences (simulates questionnaire completion)
+                const samplePreferences = {
+                    dailyActivity: 'desk-work',
+                    intensityPreference: 'medium',
+                    discomfortAreas: ['neck', 'shoulders', 'wrists'],
+                    energyLevel: 'moderate',
+                    timestamp: new Date().toISOString()
+                };
+                
+                // Save to local storage
+                await saveQuestionnaireData(samplePreferences);
+                
+                recommendationsContainer.innerHTML = `
+                    <div style="background-color: #e6ffe6; padding: 15px; border-radius: 4px;">
+                        <h3>Questionnaire Data Saved</h3>
+                        <pre>${JSON.stringify(samplePreferences, null, 2)}</pre>
+                    </div>
+                `;
+            } catch (error) {
+                showError('Error simulating questionnaire: ' + error.message);
+            }
+        });
+        
+        // Load personalized recommendations
+        document.getElementById('load-personalized').addEventListener('click', async () => {
+            try {
+                recommendationsContainer.innerHTML = '<p>Loading personalized recommendations...</p>';
+                
+                // Get user preferences from local storage
+                const userPrefs = JSON.parse(localStorage.getItem('userPreferences'));
+                
+                if (!userPrefs) {
+                    recommendationsContainer.innerHTML = '<p>No questionnaire data found. Please click "Simulate Questionnaire Completion" first.</p>';
+                    return;
+                }
+                
+                // Get personalized recommendations
+                const recommendations = await getPersonalizedRecommendations(userPrefs);
+                
+                if (recommendations.length === 0) {
+                    recommendationsContainer.innerHTML = '<p>No matching recommendations found for your profile.</p>';
+                    return;
+                }
+                
+                // Display recommendations
+                let html = `
+                    <h3>Personalized Recommendations</h3>
+                    <p>Based on: ${userPrefs.dailyActivity} activity, ${userPrefs.intensityPreference} intensity</p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+                `;
+                
+                recommendations.forEach(rec => {
+                    html += `
+                        <div style="flex: 1; min-width: 300px; background: white; border-radius: 8px; padding: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                            <h4>${rec.name}</h4>
+                            <p>${rec.description}</p>
+                            <p><strong>Duration:</strong> ${rec.duration} minutes</p>
+                            <p><strong>Best time:</strong> ${rec.timeOfDay}</p>
+                            <p><strong>Intensity:</strong> ${rec.intensity}</p>
+                            <p><strong>Target areas:</strong> ${rec.targetAreas.replace(/\|/g, ', ')}</p>
+                        </div>
+                    `;
+                });
+                
+                html += '</div>';
+                recommendationsContainer.innerHTML = html;
+                
+            } catch (error) {
+                showError('Error loading personalized recommendations: ' + error.message);
+            }
+        });
+        
+        // Helper function to display data in a table
+        function displayDataTable(data, title) {
+            if (!data || data.length === 0) {
+                dataContainer.innerHTML = '<p>No data found. Please check that your CSV files are correctly formatted and located in the data/ folder.</p>';
+                return;
+            }
+            
+            // Get column headers from first row
+            const columns = Object.keys(data[0]);
+            
+            let html = `<h3>${title} (${data.length} records)</h3>`;
+            html += '<table><thead><tr>';
+            
+            // Add table headers
+            columns.forEach(column => {
+                html += `<th>${column}</th>`;
+            });
+            
+            html += '</tr></thead><tbody>';
+            
+            // Add table rows
+            data.forEach(item => {
+                html += '<tr>';
+                columns.forEach(column => {
+                    html += `<td>${item[column] || ''}</td>`;
+                });
+                html += '</tr>';
+            });
+            
+            html += '</tbody></table>';
+            dataContainer.innerHTML = html;
+        }
+        
+        // Helper function to show errors
+        function showError(message) {
+            errorMessage.textContent = message;
+            errorMessage.style.display = 'block';
+            setTimeout(() => {
+                errorMessage.style.display = 'none';
+            }, 5000);
+        }
+    </script>
+</body>
+</html> 

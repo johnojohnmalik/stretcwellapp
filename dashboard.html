@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Dashboard - Stretch-Well</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Header -->
+        <header class="dashboard-header">
+            <div class="logo-small">
+                <img src="logo.png" alt="Stretch-Well Logo">
+            </div>
+            <div class="user-menu">
+                <div class="greeting">Welcome, User</div>
+                <div class="profile-pic">
+                    <span>👤</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Content Area -->
+        <main class="dashboard-content">
+            <!-- Welcome Message -->
+            <section class="welcome-message">
+                <h1>Your Personalized Stretch Program</h1>
+                <p>Based on your questionnaire responses, we've crafted a unique stretching program designed just for you. These exercises focus on your specific needs and will help you feel better throughout your day.</p>
+            </section>
+
+            <!-- Daily Recommendation -->
+            <section class="daily-recommendation">
+                <div class="section-header">
+                    <h2>Today's Stretches</h2>
+                    <p class="section-subheader">Tuesday, May 16</p>
+                </div>
+
+                <div class="stretches-container">
+                    <div class="stretch-card">
+                        <div class="stretch-header">
+                            <div class="stretch-type">Morning</div>
+                            <div class="stretch-time">5 min</div>
+                        </div>
+                        <h3>Energizing Upper Body Routine</h3>
+                        <p>Wake up your shoulders and neck with gentle mobility exercises.</p>
+                        <a href="#" class="btn-stretch">Start Now</a>
+                    </div>
+                    
+                    <div class="stretch-card">
+                        <div class="stretch-header">
+                            <div class="stretch-type">Midday</div>
+                            <div class="stretch-time">3 min</div>
+                        </div>
+                        <h3>Desk Reset Sequence</h3>
+                        <p>Release tension in your back, shoulders, and wrists with these seated stretches.</p>
+                        <a href="#" class="btn-stretch">Start Now</a>
+                    </div>
+                    
+                    <div class="stretch-card">
+                        <div class="stretch-header">
+                            <div class="stretch-type">Evening</div>
+                            <div class="stretch-time">7 min</div>
+                        </div>
+                        <h3>Full Body Unwinding</h3>
+                        <p>Deeply release your lower back, hips, and legs after a long workday.</p>
+                        <a href="#" class="btn-stretch">Start Now</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Progress & Stats -->
+            <section class="progress-stats">
+                <div class="section-header">
+                    <h2>Your Progress</h2>
+                </div>
+                
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-icon">🔥</div>
+                        <div class="stat-value">3</div>
+                        <div class="stat-label">Day Streak</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">⏱️</div>
+                        <div class="stat-value">37</div>
+                        <div class="stat-label">Minutes This Week</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-value">12</div>
+                        <div class="stat-label">Completed Sessions</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">🌟</div>
+                        <div class="stat-value">2</div>
+                        <div class="stat-label">Achievements</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Areas of Focus -->
+            <section class="focus-areas">
+                <div class="section-header">
+                    <h2>Your Focus Areas</h2>
+                    <p class="section-subheader">Based on your questionnaire responses</p>
+                </div>
+                
+                <div class="focus-tags">
+                    <div class="focus-tag primary">Neck</div>
+                    <div class="focus-tag primary">Lower Back</div>
+                    <div class="focus-tag primary">Wrists</div>
+                    <div class="focus-tag secondary">Shoulders</div>
+                    <div class="focus-tag secondary">Hip Flexors</div>
+                    <div class="focus-tag tertiary">Posture</div>
+                    <div class="focus-tag tertiary">Breathing</div>
+                </div>
+            </section>
+
+            <!-- Upcoming Features -->
+            <section class="upcoming-features">
+                <div class="section-header">
+                    <h2>Coming Soon</h2>
+                </div>
+                
+                <div class="features-container">
+                    <div class="feature-card">
+                        <div class="feature-icon">📱</div>
+                        <h3>Mobile App</h3>
+                        <p>Take your stretches on the go with our mobile app, launching next month.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">👥</div>
+                        <h3>Group Sessions</h3>
+                        <p>Join live stretching sessions with others who share similar needs.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🧘</div>
+                        <h3>Guided Meditations</h3>
+                        <p>Combine stretching with mindfulness practices for holistic wellness.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Navigation -->
+        <nav class="dashboard-nav">
+            <a href="#" class="nav-item active">
+                <div class="nav-icon">🏠</div>
+                <div class="nav-label">Home</div>
+            </a>
+            <a href="#" class="nav-item">
+                <div class="nav-icon">📊</div>
+                <div class="nav-label">Progress</div>
+            </a>
+            <a href="#" class="nav-item">
+                <div class="nav-icon">📝</div>
+                <div class="nav-label">Programs</div>
+            </a>
+            <a href="#" class="nav-item">
+                <div class="nav-icon">⚙️</div>
+                <div class="nav-label">Settings</div>
+            </a>
+        </nav>
+    </div>
+
+    <script type="module" src="dashboard.js"></script>
+</body>
+</html> 

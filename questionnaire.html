@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalize Your Experience - Stretch-Well</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="questionnaire.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="questionnaire-container">
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="question-counter">
+                <span id="currentQuestion">1</span> of <span id="totalQuestions">7</span>
+            </div>
+        </div>
+
+        <!-- Question Slides -->
+        <div class="slide-container">
+            <!-- Question 1 -->
+            <div class="question-slide active" data-question="1">
+                <h2>General Lifestyle Overview</h2>
+                <p class="question-text">What best describes your main daily activity?</p>
+                <p class="question-subtext">(Choose the one that reflects most of your day-to-day movement)</p>
+                
+                <div class="options-container">
+                    <div class="option">
+                        <label for="desk-work">
+                            <input type="radio" name="daily-activity" id="desk-work" value="desk-work">
+                            <div class="option-content">
+                                <div class="emoji">🧑‍💻</div>
+                                <div class="option-text">
+                                    <h3>Desk Work</h3>
+                                    <p>Sitting for long periods, working with computers or paperwork</p>
+                                    <p class="examples">Examples: Office worker, graphic designer, student, accountant, software developer</p>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                    
+                    <div class="option">
+                        <label for="physical-labor">
+                            <input type="radio" name="daily-activity" id="physical-labor" value="physical-labor">
+                            <div class="option-content">
+                                <div class="emoji">🛠</div>
+                                <div class="option-text">
+                                    <h3>Physical Labor</h3>
+                                    <p>Frequent lifting, carrying, building, or intense full-body effort</p>
+                                    <p class="examples">Examples: Construction worker, landscaper, warehouse staff, mover etc</p>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                    
+                    <div class="option">
+                        <label for="standing">
+                            <input type="radio" name="daily-activity" id="standing" value="standing">
+                            <div class="option-content">
+                                <div class="emoji">🧑‍🏫</div>
+                                <div class="option-text">
+                                    <h3>Standing Most of the Day</h3>
+                                    <p>On your feet for extended periods, often moving lightly</p>
+                                    <p class="examples">Examples: Teacher, chef, bartender, retail staff, tour guide</p>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                    
+                    <div class="option">
+                        <label for="driving">
+                            <input type="radio" name="daily-activity" id="driving" value="driving">
+                            <div class="option-content">
+                                <div class="emoji">🚗</div>
+                                <div class="option-text">
+                                    <h3>Driving</h3>
+                                    <p>Seated and alert for long stretches, limited movement</p>
+                                    <p class="examples">Examples: Truck driver, delivery driver, rideshare driver, bus driver</p>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                    
+                    <div class="option">
+                        <label for="handwork">
+                            <input type="radio" name="daily-activity" id="handwork" value="handwork">
+                            <div class="option-content">
+                                <div class="emoji">✋</div>
+                                <div class="option-text">
+                                    <h3>Handwork / Precision Tasks</h3>
+                                    <p>Fine motor tasks with hands and fingers, often in fixed positions</p>
+                                    <p class="examples">Examples: Artist, mechanic, jeweler, dentist, beautician</p>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                    
+                    <div class="option">
+                        <label for="other">
+                            <input type="radio" name="daily-activity" id="other" value="other">
+                            <div class="option-content">
+                                <div class="emoji">🌀</div>
+                                <div class="option-text">
+                                    <h3>Other</h3>
+                                    <p>Not listed? Describe your daily activity:</p>
+                                    <input type="text" class="other-input" placeholder="Please describe your activity" disabled>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="navigation-buttons">
+                    <button class="btn-next" data-next="2">Continue</button>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question-slide" data-question="2">
+                <h2>Areas of Discomfort</h2>
+                <p class="question-text">Are there any areas where you feel discomfort, tension, or pain?</p>
+                <p class="question-subtext">(Select all that apply)</p>
+                
+                <div class="tags-container">
+                    <div class="tag"><input type="checkbox" id="abdominals"><label for="abdominals">Abdominals</label></div>
+                    <div class="tag"><input type="checkbox" id="achilles"><label for="achilles">Achilles tendon</label></div>
+                    <div class="tag"><input type="checkbox" id="ankles"><label for="ankles">Ankles</label></div>
+                    <div class="tag"><input type="checkbox" id="arms"><label for="arms">Arms</label></div>
+                    <div class="tag"><input type="checkbox" id="back"><label for="back">Back</label></div>
+                    <div class="tag"><input type="checkbox" id="biceps"><label for="biceps">Biceps</label></div>
+                    <div class="tag"><input type="checkbox" id="calves"><label for="calves">Calves</label></div>
+                    <div class="tag"><input type="checkbox" id="chest"><label for="chest">Chest</label></div>
+                    <div class="tag"><input type="checkbox" id="core"><label for="core">Core</label></div>
+                    <div class="tag"><input type="checkbox" id="elbows"><label for="elbows">Elbows</label></div>
+                    <div class="tag"><input type="checkbox" id="feet"><label for="feet">Feet</label></div>
+                    <div class="tag"><input type="checkbox" id="fingers"><label for="fingers">Fingers</label></div>
+                    <div class="tag"><input type="checkbox" id="forearms"><label for="forearms">Forearms</label></div>
+                    <div class="tag"><input type="checkbox" id="fullbody"><label for="fullbody">Full body</label></div>
+                    <div class="tag"><input type="checkbox" id="glutes"><label for="glutes">Glutes</label></div>
+                    <div class="tag"><input type="checkbox" id="hamstrings"><label for="hamstrings">Hamstrings</label></div>
+                    <div class="tag"><input type="checkbox" id="hands"><label for="hands">Hands</label></div>
+                    <div class="tag"><input type="checkbox" id="heel"><label for="heel">Heel</label></div>
+                    <div class="tag"><input type="checkbox" id="hipflexors"><label for="hipflexors">Hip flexors</label></div>
+                    <div class="tag"><input type="checkbox" id="hipjoints"><label for="hipjoints">Hip joints</label></div>
+                    <div class="tag"><input type="checkbox" id="hips"><label for="hips">Hips</label></div>
+                    <div class="tag"><input type="checkbox" id="itband"><label for="itband">IT band</label></div>
+                    <div class="tag"><input type="checkbox" id="joints"><label for="joints">Joints</label></div>
+                    <div class="tag"><input type="checkbox" id="lats"><label for="lats">Lats</label></div>
+                    <div class="tag"><input type="checkbox" id="lowerback"><label for="lowerback">Lower back</label></div>
+                    <div class="tag"><input type="checkbox" id="midback"><label for="midback">Mid-back</label></div>
+                    <div class="tag"><input type="checkbox" id="neck"><label for="neck">Neck</label></div>
+                    <div class="tag"><input type="checkbox" id="obliques"><label for="obliques">Obliques</label></div>
+                    <div class="tag"><input type="checkbox" id="outerthigh"><label for="outerthigh">Outer thigh</label></div>
+                    <div class="tag"><input type="checkbox" id="posteriordelts"><label for="posteriordelts">Posterior deltoid</label></div>
+                    <div class="tag"><input type="checkbox" id="posture"><label for="posture">Posture</label></div>
+                    <div class="tag"><input type="checkbox" id="quads"><label for="quads">Quads / Quadriceps</label></div>
+                    <div class="tag"><input type="checkbox" id="shoulders"><label for="shoulders">Shoulders</label></div>
+                    <div class="tag"><input type="checkbox" id="sidebody"><label for="sidebody">Side body</label></div>
+                    <div class="tag"><input type="checkbox" id="spine"><label for="spine">Spine</label></div>
+                    <div class="tag"><input type="checkbox" id="torso"><label for="torso">Torso</label></div>
+                    <div class="tag"><input type="checkbox" id="trapezius"><label for="trapezius">Trapezius</label></div>
+                    <div class="tag"><input type="checkbox" id="triceps"><label for="triceps">Triceps</label></div>
+                    <div class="tag"><input type="checkbox" id="upperback"><label for="upperback">Upper back</label></div>
+                    <div class="tag"><input type="checkbox" id="uppertrap"><label for="uppertrap">Upper trapezius</label></div>
+                    <div class="tag"><input type="checkbox" id="wrists"><label for="wrists">Wrist / Wrists</label></div>
+                    <div class="tag"><input type="checkbox" id="thumbs"><label for="thumbs">Thumbs</label></div>
+                    <div class="tag"><input type="checkbox" id="eyes"><label for="eyes">Eyes</label></div>
+                </div>
+                
+                <div class="navigation-buttons">
+                    <button class="btn-prev" data-prev="1">Back</button>
+                    <button class="btn-next" data-next="3">Continue</button>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question-slide" data-question="3">
+                <h2>Intensity Preference</h2>
+                <p class="question-text">What's your current level or preference for intensity?</p>
+                <p class="question-subtext">(Choose one)</p>
+                
+                <div class="intensity-options">
+                    <div class="intensity-option">
+                        <label for="easy">
+                            <input type="radio" name="intensity" id="easy" value="easy">
+                            <div class="intensity-content">
+                                <div class="intensity-indicator easy">🟢</div>
+                                <div class="intensity-text">
+                                    <h3>Easy</h3>
+                                    <p>I want gentle release and awareness</p>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                    
+                    <div class="intensity-option">
+                        <label for="medium">
+                            <input type="radio" name="intensity" id="medium" value="medium">
+                            <div class="intensity-content">
+                                <div class="intensity-indicator medium">🟡</div>
+                                <div class="intensity-text">
+                                    <h3>Medium</h3>
+                                    <p>I'm ready for a little challenge</p>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                    
+                    <div class="intensity-option">
+                        <label for="hard">
+                            <input type="radio" name="intensity" id="hard" value="hard">
+                            <div class="intensity-content">
+                                <div class="intensity-indicator hard">🔴</div>
+                                <div class="intensity-text">
+                                    <h3>Hard</h3>
+                                    <p>I want something strong and energizing</p>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="navigation-buttons">
+                    <button class="btn-prev" data-prev="2">Back</button>
+                    <button class="btn-next" data-next="4">Continue</button>
+                </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="question-slide" data-question="4">
+                <h2>Current Energy</h2>
+                <p class="question-text">How would you describe your current energy level?</p>
+                <p class="question-subtext">(Choose one)</p>
+                
+                <div class="energy-options">
+                    <div class="energy-option">
+                        <label for="very-low">
+                            <input type="radio" name="energy" id="very-low" value="very-low">
+                            <div class="energy-content">
+                                <div class="energy-indicator">🌑</div>
+                                <div class="energy-text">
+                                    <h3>Very low</h3>
+                                    <p>I'm drained</p>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                    
+                    <div class="energy-option">
+                        <label for="low">
+                            <input type="radio" name="energy" id="low" value="low">
+                            <div class="energy-content">
+                                <div class="energy-indicator">🌘</div>
+                                <div class="energy-text">
+                                    <h3>Low</h3>
+                                    <p>I could use a boost</p>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                    
+                    <div class="energy-option">
+                        <label for="moderate">
+                            <input type="radio" name="energy" id="moderate" value="moderate">
+                            <div class="energy-content">
+                                <div class="energy-indicator">🌗</div>
+                                <div class="energy-text">
+                                    <h3>Moderate</h3>
+                                    <p>I'm okay but not great</p>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                    
+                    <div class="energy-option">
+                        <label for="high">
+                            <input type="radio" name="energy" id="high" value="high">
+                            <div class="energy-content">
+                                <div class="energy-indicator">🌔</div>
+                                <div class="energy-text">
+                                    <h3>High</h3>
+                                    <p>I feel energized</p>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                    
+                    <div class="energy-option">
+                        <label for="very-high">
+                            <input type="radio" name="energy" id="very-high" value="very-high">
+                            <div class="energy-content">
+                                <div class="energy-indicator">🌕</div>
+                                <div class="energy-text">
+                                    <h3>Very high</h3>
+                                    <p>I'm ready to move!</p>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="navigation-buttons">
+                    <button class="btn-prev" data-prev="3">Back</button>
+                    <button class="btn-next" data-next="5">Continue</button>
+                </div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="question-slide" data-question="5">
+                <h2>Breath Awareness</h2>
+                <p class="question-text">How connected are you to your breath throughout the day?</p>
+                
+                <div class="breath-options">
+                    <div class="breath-option">
+                        <label for="not-at-all">
+                            <input type="radio" name="breath" id="not-at-all" value="not-at-all">
+                            <div class="breath-content">
+                                <div class="breath-indicator">😮‍💨</div>
+                                <div class="breath-text">
+                                    <h3>Not at all</h3>
+                                    <p>I rarely notice it</p>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                    
+                    <div class="breath-option">
+                        <label for="occasionally">
+                            <input type="radio" name="breath" id="occasionally" value="occasionally">
+                            <div class="breath-content">
+                                <div class="breath-indicator">🌬</div>
+                                <div class="breath-text">
+                                    <h3>Occasionally</h3>
+                                    <p>I check in sometimes</p>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                    
+                    <div class="breath-option">
+                        <label for="often">
+                            <input type="radio" name="breath" id="often" value="often">
+                            <div class="breath-content">
+                                <div class="breath-indicator">🌿</div>
+                                <div class="breath-text">
+                                    <h3>Often</h3>
+                                    <p>I try to stay aware</p>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                    
+                    <div class="breath-option">
+                        <label for="very-aware">
+                            <input type="radio" name="breath" id="very-aware" value="very-aware">
+                            <div class="breath-content">
+                                <div class="breath-indicator">🧘</div>
+                                <div class="breath-text">
+                                    <h3>Very aware</h3>
+                                    <p>I consciously use my breath to ground and calm</p>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="navigation-buttons">
+                    <button class="btn-prev" data-prev="4">Back</button>
+                    <button class="btn-next" data-next="6">Continue</button>
+                </div>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="question-slide" data-question="6">
+                <h2>Work & Recovery Habits</h2>
+                
+                <div class="habit-questions">
+                    <div class="habit-question">
+                        <p class="question-text">How often do you adjust your posture while working?</p>
+                        <div class="habit-options">
+                            <label class="habit-option"><input type="radio" name="posture-adjust" value="rarely"> Rarely</label>
+                            <label class="habit-option"><input type="radio" name="posture-adjust" value="occasionally"> Occasionally</label>
+                            <label class="habit-option"><input type="radio" name="posture-adjust" value="frequently"> Frequently</label>
+                            <label class="habit-option"><input type="radio" name="posture-adjust" value="constantly"> Constantly checking in</label>
+                        </div>
+                    </div>
+                    
+                    <div class="habit-question">
+                        <p class="question-text">Do you feel tense or shallow-breathed while working?</p>
+                        <div class="habit-options">
+                            <label class="habit-option"><input type="radio" name="tense-breathing" value="yes"> Yes, regularly</label>
+                            <label class="habit-option"><input type="radio" name="tense-breathing" value="sometimes"> Sometimes</label>
+                            <label class="habit-option"><input type="radio" name="tense-breathing" value="rarely"> Rarely</label>
+                            <label class="habit-option"><input type="radio" name="tense-breathing" value="never"> Never</label>
+                        </div>
+                    </div>
+                    
+                    <div class="habit-question">
+                        <p class="question-text">How often do you take movement or breathing breaks during work?</p>
+                        <div class="habit-options">
+                            <label class="habit-option"><input type="radio" name="movement-breaks" value="never"> Never</label>
+                            <label class="habit-option"><input type="radio" name="movement-breaks" value="occasionally"> Occasionally</label>
+                            <label class="habit-option"><input type="radio" name="movement-breaks" value="every-few-hours"> Every few hours</label>
+                            <label class="habit-option"><input type="radio" name="movement-breaks" value="frequently"> Frequently</label>
+                        </div>
+                    </div>
+                    
+                    <div class="habit-question">
+                        <p class="question-text">Do you stretch or do any mobility work after work?</p>
+                        <div class="habit-options">
+                            <label class="habit-option"><input type="radio" name="after-work-stretch" value="never"> Never</label>
+                            <label class="habit-option"><input type="radio" name="after-work-stretch" value="occasionally"> Occasionally</label>
+                            <label class="habit-option"><input type="radio" name="after-work-stretch" value="most-days"> Most days</label>
+                            <label class="habit-option"><input type="radio" name="after-work-stretch" value="always"> Always</label>
+                        </div>
+                    </div>
+                    
+                    <div class="habit-question">
+                        <p class="question-text">How often do you feel you overexert yourself physically?</p>
+                        <div class="habit-options">
+                            <label class="habit-option"><input type="radio" name="overexert" value="daily"> Daily</label>
+                            <label class="habit-option"><input type="radio" name="overexert" value="few-times-week"> A few times a week</label>
+                            <label class="habit-option"><input type="radio" name="overexert" value="rarely"> Rarely</label>
+                            <label class="habit-option"><input type="radio" name="overexert" value="never"> Never</label>
+                        </div>
+                    </div>
+                    
+                    <div class="habit-question">
+                        <p class="question-text">On a scale from 0–10, how would you rate your physical discomfort right now?</p>
+                        <p class="question-subtext">(0 = no discomfort, 10 = intense discomfort)</p>
+                        <div class="discomfort-slider">
+                            <input type="range" min="0" max="10" value="5" id="discomfort-range">
+                            <div class="slider-labels">
+                                <span>0</span>
+                                <span>1</span>
+                                <span>2</span>
+                                <span>3</span>
+                                <span>4</span>
+                                <span>5</span>
+                                <span>6</span>
+                                <span>7</span>
+                                <span>8</span>
+                                <span>9</span>
+                                <span>10</span>
+                            </div>
+                            <div class="slider-value">Current value: <span id="discomfort-value">5</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="navigation-buttons">
+                    <button class="btn-prev" data-prev="5">Back</button>
+                    <button class="btn-next" data-next="7">Continue</button>
+                </div>
+            </div>
+
+            <!-- Question 7 (New Routine Duration) -->
+            <div class="question-slide" data-question="7">
+                <h2>Routine Duration</h2>
+                <p class="question-text">How long do you want your routine to be?</p>
+                <p class="question-subtext">(Choose one)</p>
+                
+                <div class="duration-options">
+                    <div class="duration-option">
+                        <label for="short">
+                            <input type="radio" name="routine-duration" id="short" value="short">
+                            <div class="duration-content">
+                                <div class="duration-indicator">⏱️</div>
+                                <div class="duration-text">
+                                    <h3>3–5 minutes</h3>
+                                    <p>Quick stretch break</p>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                    
+                    <div class="duration-option">
+                        <label for="medium">
+                            <input type="radio" name="routine-duration" id="medium" value="medium">
+                            <div class="duration-content">
+                                <div class="duration-indicator">⏲️</div>
+                                <div class="duration-text">
+                                    <h3>10–15 minutes</h3>
+                                    <p>Standard routine</p>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                    
+                    <div class="duration-option">
+                        <label for="long">
+                            <input type="radio" name="routine-duration" id="long" value="long">
+                            <div class="duration-content">
+                                <div class="duration-indicator">🕔</div>
+                                <div class="duration-text">
+                                    <h3>15–20 minutes</h3>
+                                    <p>Extended session</p>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="navigation-buttons">
+                    <button class="btn-prev" data-prev="6">Back</button>
+                    <button class="btn-submit">Submit</button>
+                </div>
+            </div>
+
+            <!-- Completion Slide -->
+            <div class="question-slide completion-slide" data-question="complete">
+                <div class="completion-content">
+                    <h2>Thank You!</h2>
+                    <p>We've created your personalized stretching program based on your responses.</p>
+                    <div class="checkmark-animation">✓</div>
+                    <a href="routine.html" class="btn-primary">View Your Routine</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="questionnaire.js"></script>
+</body>
+</html> 

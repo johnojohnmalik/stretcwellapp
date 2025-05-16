@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Stretching Routine - Stretch-Well</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        .routine-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .routine-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .routine-title {
+            font-family: 'Playfair Display', serif;
+            color: #0A99AB;
+            margin-bottom: 5px;
+        }
+        
+        .routine-subtitle {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .duration-badge {
+            display: inline-flex;
+            align-items: center;
+            background-color: rgba(10, 153, 171, 0.1);
+            border-radius: 30px;
+            padding: 8px 15px;
+            margin-bottom: 20px;
+        }
+        
+        .duration-badge .icon {
+            margin-right: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .routine-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .exercise-card {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .exercise-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+        
+        .exercise-header {
+            background-color: #0A99AB;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .exercise-count {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 5px 10px;
+            font-size: 0.8rem;
+        }
+        
+        .exercise-body {
+            padding: 20px;
+        }
+        
+        .exercise-title {
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .exercise-description {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .exercise-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .exercise-item {
+            display: flex;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .exercise-item:last-child {
+            border-bottom: none;
+        }
+        
+        .exercise-number {
+            flex: 0 0 30px;
+            font-weight: bold;
+            color: #0A99AB;
+        }
+        
+        .exercise-detail {
+            flex: 1;
+        }
+        
+        .exercise-name {
+            font-weight: 500;
+            margin-bottom: 5px;
+            color: #0A99AB;
+        }
+        
+        .exercise-name:hover {
+            text-decoration: none;
+        }
+        
+        .exercise-name.viewed {
+            position: relative;
+        }
+        
+        .exercise-name.viewed::after {
+            content: "✓";
+            font-size: 0.7rem;
+            position: absolute;
+            top: 0;
+            right: -15px;
+            background-color: #0A99AB;
+            color: white;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .exercise-info {
+            display: flex;
+            font-size: 0.85rem;
+            color: #777;
+        }
+        
+        .exercise-info span {
+            margin-right: 15px;
+        }
+        
+        .exercise-area-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 8px;
+        }
+        
+        .area-tag {
+            background-color: #f0f8fa;
+            color: #0A99AB;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+        }
+        
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .btn {
+            background-color: #0A99AB;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: #088596;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background-color: #f0f8fa;
+            color: #0A99AB;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #e0f0f4;
+        }
+        
+        .btn-primary {
+            background-color: #0A99AB;
+            color: white;
+            font-weight: 600;
+            padding: 14px 28px;
+            box-shadow: 0 4px 10px rgba(10, 153, 171, 0.25);
+        }
+        
+        .btn-primary:hover {
+            background-color: #088596;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(10, 153, 171, 0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .routine-flow {
+                gap: 20px;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+        
+        .exercise-modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            overflow: auto;
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 30px;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+            animation: modalFadeIn 0.3s ease-in-out;
+        }
+        
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .modal-header {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .modal-section {
+            margin-bottom: 25px;
+        }
+        
+        .modal-section-title {
+            color: #0A99AB;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        
+        .close-modal {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #999;
+        }
+        
+        .close-modal:hover {
+            color: #333;
+        }
+        
+        .modal-title {
+            color: #0A99AB;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .modal-subtitle {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .instruction-step {
+            display: flex;
+            margin-bottom: 15px;
+        }
+        
+        .step-number {
+            flex: 0 0 30px;
+            font-weight: bold;
+            color: #0A99AB;
+        }
+        
+        .step-text {
+            flex: 1;
+        }
+        
+        .benefits-list {
+            background-color: #f0f8fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        
+        .benefits-list h4 {
+            margin-top: 0;
+            color: #0A99AB;
+        }
+        
+        .start-routine-btn {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #0A99AB;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .start-routine-btn:hover {
+            background-color: #088596;
+            transform: translateY(-2px);
+        }
+        
+        .start-routine-btn .icon {
+            margin-right: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .routine-flow-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            overflow: auto;
+        }
+        
+        .routine-flow-container {
+            position: relative;
+            width: 90%;
+            max-width: 800px;
+            margin: 5% auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.4s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .close-routine-flow {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            color: #666;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        
+        .close-routine-flow:hover {
+            color: #333;
+        }
+        
+        .routine-progress {
+            margin-bottom: 20px;
+        }
+        
+        .progress-bar-container {
+            height: 6px;
+            background-color: #eee;
+            border-radius: 3px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+        
+        .progress-bar-fill {
+            height: 100%;
+            background-color: #0A99AB;
+            transition: width 0.3s ease;
+        }
+        
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .routine-flow-header {
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .routine-flow-title {
+            color: #0A99AB;
+            margin-bottom: 5px;
+        }
+        
+        .routine-exercise {
+            margin-bottom: 30px;
+        }
+        
+        .exercise-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        
+        .exercise-meta {
+            display: flex;
+            align-items: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .exercise-difficulty {
+            margin-right: 15px;
+        }
+        
+        .exercise-timer {
+            display: flex;
+            align-items: center;
+        }
+        
+        .timer-icon {
+            margin-right: 5px;
+        }
+        
+        .exercise-sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .exercise-sections {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .exercise-section {
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            border-left: 4px solid #0A99AB;
+        }
+        
+        .section-title {
+            color: #0A99AB;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .section-content {
+            line-height: 1.6;
+            color: #555;
+        }
+        
+        .routine-flow-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        
+        .nav-btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn {
+            background-color: #f0f0f0;
+            color: #666;
+        }
+        
+        .back-btn:hover {
+            background-color: #e0e0e0;
+        }
+        
+        .next-btn {
+            background-color: #0A99AB;
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+        
+        .next-btn:hover {
+            background-color: #088596;
+            transform: translateY(-2px);
+        }
+        
+        .next-icon {
+            margin-left: 8px;
+        }
+        
+        .complete-btn {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        .complete-btn:hover {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+<body>
+    <div class="routine-container">
+        <div class="routine-header">
+            <h1 class="routine-title">Your Personalized Stretching Routine</h1>
+            <p class="routine-subtitle">Based on your questionnaire responses</p>
+            <div class="duration-badge">
+                <span class="icon">⏱️</span>
+                <span class="duration-text">Loading...</span>
+            </div>
+        </div>
+        
+        <div class="routine-flow" id="routineFlow">
+            <!-- Exercise sequences will be loaded here -->
+            <div class="loading">Loading your personalized routine...</div>
+        </div>
+        
+        <div class="action-buttons">
+            <a href="dashboard.html" class="btn btn-secondary">Go to Dashboard</a>
+            <button id="startRoutine" class="btn btn-primary">Start Guided Routine</button>
+        </div>
+    </div>
+    
+    <div id="exerciseModal" class="exercise-modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeExerciseModal()">&times;</span>
+            
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle">Exercise Name</h3>
+                <div class="modal-subtitle" id="modalDetails">Details</div>
+            </div>
+            
+            <div class="modal-section">
+                <h4 class="modal-section-title">How to Perform</h4>
+                <div id="modalInstructions">
+                    <div class="instruction-step">
+                        <div class="step-number">1.</div>
+                        <div class="step-text">Find a comfortable position where you can focus on the exercise.</div>
+                    </div>
+                    <div class="instruction-step">
+                        <div class="step-number">2.</div>
+                        <div class="step-text" id="modalMainInstruction">Main instruction will appear here.</div>
+                    </div>
+                    <div class="instruction-step">
+                        <div class="step-number">3.</div>
+                        <div class="step-text">Hold for the recommended duration, breathing deeply throughout.</div>
+                    </div>
+                    <div class="instruction-step">
+                        <div class="step-number">4.</div>
+                        <div class="step-text">Release slowly and mindfully.</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-section">
+                <h4 class="modal-section-title">Why This Exercise Helps</h4>
+                <div class="benefits-list">
+                    <ul id="modalBenefits">
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="modal-section">
+                <h4 class="modal-section-title">Tips for Success</h4>
+                <ul>
+                    <li>Always maintain proper form over intensity</li>
+                    <li>Breathe deeply and consistently during the stretch</li>
+                    <li>If you feel pain (not just intensity), back off immediately</li>
+                    <li>Consistent practice will yield better results than occasional deep stretching</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="routine-flow-overlay" id="routineFlowOverlay">
+        <div class="routine-flow-container">
+            <span class="close-routine-flow" onclick="closeRoutineFlow()">&times;</span>
+            
+            <div class="routine-progress">
+                <div class="progress-bar-container">
+                    <div class="progress-bar-fill" id="progressBarFill"></div>
+                </div>
+                <div class="progress-text">
+                    <span id="currentExercise">Exercise 1</span>
+                    <span id="exerciseTotal">of 5</span>
+                </div>
+            </div>
+            
+            <div class="routine-flow-header">
+                <h2 class="routine-flow-title" id="routineName">Routine Name</h2>
+                <p id="routineDescription">Routine description</p>
+            </div>
+            
+            <div class="routine-exercise">
+                <div class="exercise-header">
+                    <h3 id="exerciseName">Exercise Name</h3>
+                    <div class="exercise-meta">
+                        <div class="exercise-difficulty" id="exerciseDifficulty">Medium</div>
+                        <div class="exercise-timer">
+                            <span class="timer-icon">⏱️</span>
+                            <span id="exerciseDuration">30 seconds</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="exercise-sections">
+                    <div class="exercise-section">
+                        <h4 class="section-title">How to Perform</h4>
+                        <div class="section-content" id="exerciseInstructions">
+                            Instructions will be shown here.
+                        </div>
+                    </div>
+                    
+                    <div class="exercise-section">
+                        <h4 class="section-title">Why This is Beneficial</h4>
+                        <div class="section-content" id="exerciseBenefits">
+                            Benefits will be shown here.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="routine-flow-nav">
+                <button class="nav-btn back-btn" id="prevExerciseBtn" onclick="navigateExercise(-1)">Previous</button>
+                <button class="nav-btn next-btn" id="nextExerciseBtn" onclick="navigateExercise(1)">Next <span class="next-icon">→</span></button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Global variables to track current routine flow
+        let currentRoutineExercises = [];
+        let currentExerciseIndex = 0;
+        let currentRoutineData = null;
+        
+        // Function to start a routine
+        function startRoutine(routineId, exerciseIds, routineName, routineDescription) {
+            // Ensure exerciseIds is an array
+            if (typeof exerciseIds === 'string') {
+                try {
+                    // Try to parse it as JSON
+                    exerciseIds = JSON.parse(exerciseIds);
+                } catch (e) {
+                    console.error('Failed to parse exerciseIds as JSON:', e);
+                    // If it includes pipe character, split by pipe
+                    if (exerciseIds.includes('|')) {
+                        exerciseIds = exerciseIds.split('|');
+                    } 
+                    // If it includes commas, try splitting by comma
+                    else if (exerciseIds.includes(',')) {
+                        exerciseIds = exerciseIds.split(',');
+                    } else {
+                        // Treat as a single ID
+                        exerciseIds = [exerciseIds];
+                    }
+                }
+            }
+            
+            console.log('Starting routine:', {
+                routineId, 
+                exerciseIds, 
+                routineName, 
+                routineDescription
+            });
+            
+            // Store data for the routine flow
+            currentRoutineExercises = exerciseIds;
+            currentExerciseIndex = 0;
+            currentRoutineData = {
+                name: routineName,
+                description: routineDescription
+            };
+            
+            // Update UI elements
+            document.getElementById('routineName').textContent = routineName;
+            document.getElementById('routineDescription').textContent = routineDescription;
+            document.getElementById('exerciseTotal').textContent = `of ${exerciseIds.length}`;
+            
+            // Show the first exercise
+            updateExerciseDisplay();
+            
+            // Show the overlay
+            document.getElementById('routineFlowOverlay').style.display = 'block';
+            
+            // Prevent scrolling on the background
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeRoutineFlow() {
+            document.getElementById('routineFlowOverlay').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        function updateExerciseDisplay() {
+            // Check if we have exercises
+            if (!currentRoutineExercises || currentRoutineExercises.length === 0) {
+                console.error('No exercises in current routine');
+                return;
+            }
+            
+            // Get current exercise ID
+            const exerciseId = currentRoutineExercises[currentExerciseIndex];
+            console.log('Showing exercise:', exerciseId, 'index:', currentExerciseIndex);
+            
+            // Check if global exercise data is available
+            if (!window.allExercisesData) {
+                console.error('Exercise data not found globally');
+                return;
+            }
+            
+            // Find exercise data in allExercisesData
+            const exercise = window.allExercisesData.find(ex => ex.exerciseId === exerciseId);
+            if (!exercise) {
+                console.error('Exercise not found:', exerciseId);
+                return;
+            }
+            
+            // Update UI with exercise details
+            document.getElementById('exerciseName').textContent = exercise.name;
+            document.getElementById('exerciseDifficulty').textContent = exercise.difficulty.charAt(0).toUpperCase() + exercise.difficulty.slice(1);
+            document.getElementById('exerciseDuration').textContent = `${exercise.duration} seconds`;
+            document.getElementById('exerciseInstructions').textContent = exercise.description;
+            
+            // Generate benefits based on body areas
+            let benefitsHtml = '';
+            
+            if (exercise.bodyAreas) {
+                const areas = exercise.bodyAreas.split('|');
+                const benefitsMap = {
+                    'neck': 'Relieves neck tension and improves mobility',
+                    'shoulders': 'Reduces shoulder tightness and improves posture',
+                    'upperback': 'Reduces upper back stiffness and improves posture',
+                    'midback': 'Alleviates mid-back tension and improves spinal mobility',
+                    'lowerback': 'Decreases lower back pain and improves core stability',
+                    'wrists': 'Improves wrist flexibility and reduces repetitive strain',
+                    'hands': 'Reduces hand cramping and improves dexterity',
+                    'fingers': 'Improves finger mobility and reduces stiffness',
+                    'hips': 'Increases hip mobility and reduces tension',
+                    'glutes': 'Activates gluteal muscles and reduces sitting-related tension',
+                    'hamstrings': 'Lengthens hamstrings and reduces lower back pressure',
+                    'quads': 'Stretches quadriceps and improves knee mobility',
+                    'eyes': 'Reduces eye strain and fatigue from screen time',
+                    'ankles': 'Improves ankle mobility and circulation',
+                    'feet': 'Relieves foot tension and improves stability',
+                    'spine': 'Enhances spinal mobility and posture',
+                    'chest': 'Opens the chest and improves breathing capacity',
+                    'sidebody': 'Lengthens the side body and improves lateral flexibility',
+                    'fullbody': 'Provides comprehensive stretch for overall mobility'
+                };
+                
+                benefitsHtml = areas.map(area => {
+                    if (benefitsMap[area]) {
+                        return `<p>• ${benefitsMap[area]}</p>`;
+                    }
+                    return '';
+                }).join('');
+            }
+            
+            // If no benefits were generated, add a default one
+            if (!benefitsHtml) {
+                benefitsHtml = '<p>• Improves overall flexibility and body awareness</p>';
+            }
+            
+            document.getElementById('exerciseBenefits').innerHTML = benefitsHtml;
+            
+            // Update progress
+            const progressPercentage = ((currentExerciseIndex + 1) / currentRoutineExercises.length) * 100;
+            document.getElementById('progressBarFill').style.width = `${progressPercentage}%`;
+            document.getElementById('currentExercise').textContent = `Exercise ${currentExerciseIndex + 1}`;
+            
+            // Update buttons
+            const prevBtn = document.getElementById('prevExerciseBtn');
+            const nextBtn = document.getElementById('nextExerciseBtn');
+            
+            // Disable prev button if on first exercise
+            prevBtn.disabled = currentExerciseIndex === 0;
+            prevBtn.style.opacity = currentExerciseIndex === 0 ? '0.5' : '1';
+            
+            // Change next button to "Complete" if on last exercise
+            if (currentExerciseIndex === currentRoutineExercises.length - 1) {
+                nextBtn.textContent = 'Complete';
+                nextBtn.classList.add('complete-btn');
+                nextBtn.classList.remove('next-btn');
+            } else {
+                nextBtn.innerHTML = 'Next <span class="next-icon">→</span>';
+                nextBtn.classList.remove('complete-btn');
+                nextBtn.classList.add('next-btn');
+            }
+            
+            // Mark this exercise as viewed in the list
+            markExerciseAsViewed(exerciseId);
+        }
+        
+        function navigateExercise(direction) {
+            // Calculate new index
+            const newIndex = currentExerciseIndex + direction;
+            
+            // Check if new index is valid
+            if (newIndex >= 0 && newIndex < currentRoutineExercises.length) {
+                currentExerciseIndex = newIndex;
+                updateExerciseDisplay();
+            } else if (newIndex >= currentRoutineExercises.length) {
+                // If we went past the last exercise, close the flow
+                closeRoutineFlow();
+            }
+        }
+        
+        function markExerciseAsViewed(exerciseId) {
+            // Find the exercise element in the list and mark it as viewed
+            const exerciseElements = document.querySelectorAll(`.exercise-name[data-id="${exerciseId}"]`);
+            exerciseElements.forEach(element => {
+                element.classList.add('viewed');
+            });
+            
+            // Store viewed exercises in localStorage
+            try {
+                let viewedExercises = [];
+                const storedViewed = localStorage.getItem('viewedExercises');
+                if (storedViewed) {
+                    viewedExercises = JSON.parse(storedViewed);
+                }
+                
+                if (!viewedExercises.includes(exerciseId)) {
+                    viewedExercises.push(exerciseId);
+                    localStorage.setItem('viewedExercises', JSON.stringify(viewedExercises));
+                }
+            } catch (e) {
+                console.warn('Could not store viewed exercise status');
+            }
+        }
+        
+        // Functions for the exercise modal (keeping these for reference)
+        function showExerciseDetailsFromElement(element) {
+            // This function is now disabled as per requirements
+            return false;
+        }
+        
+        function showExerciseDetails(id, name, difficulty, duration, bodyAreas, description) {
+            // This function is now disabled as per requirements
+            return false;
+        }
+        
+        function closeExerciseModal() {
+            const modal = document.getElementById('exerciseModal');
+            modal.style.display = 'none';
+        }
+    </script>
+    
+    <script type="module" defer>
+        import { 
+            getSavedQuestionnaireData,
+            getPersonalizedRecommendations,
+            loadExercises
+        } from './js/data-service.js';
+        
+        document.addEventListener('DOMContentLoaded', async function() {
+            try {
+                console.log('Document ready, initializing routine page...');
+                
+                // Get user preferences from questionnaire
+                const userPrefs = getSavedQuestionnaireData();
+                console.log('User preferences:', userPrefs);
+                
+                if (!userPrefs) {
+                    window.location.href = 'questionnaire.html';
+                    return;
+                }
+                
+                // Update duration badge
+                const durationBadge = document.querySelector('.duration-badge .duration-text');
+                if (userPrefs.routineDuration && userPrefs.routineDuration.label) {
+                    durationBadge.textContent = userPrefs.routineDuration.label + ' routine';
+                    
+                    // Update page title
+                    document.title = `${userPrefs.routineDuration.label} Stretching Routine - Stretch-Well`;
+                }
+                
+                // Get recommendations
+                const recommendations = await getPersonalizedRecommendations(userPrefs);
+                console.log('Recommendations:', recommendations);
+                
+                // Get all exercises data for reference
+                const allExercises = await loadExercises();
+                console.log('All exercises:', allExercises);
+                
+                // Make exercises data globally available for the guided routine flow
+                window.allExercisesData = allExercises;
+                
+                // Get previously viewed exercises from localStorage
+                let viewedExercises = [];
+                try {
+                    const storedViewed = localStorage.getItem('viewedExercises');
+                    if (storedViewed) {
+                        viewedExercises = JSON.parse(storedViewed);
+                    }
+                } catch (e) {
+                    console.warn('Could not retrieve viewed exercises');
+                }
+                
+                // Get exercise details by ID
+                function getExerciseById(id) {
+                    return allExercises.find(ex => ex.exerciseId === id) || null;
+                }
+                
+                // Generate the routine
+                const routineFlow = document.getElementById('routineFlow');
+                routineFlow.innerHTML = '';
+                
+                if (!recommendations || recommendations.length === 0) {
+                    routineFlow.innerHTML = `
+                        <div class="no-recommendations">
+                            <p>No personalized recommendations are available. Please try updating your questionnaire.</p>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                // Display each recommendation as a card
+                recommendations.forEach((rec, index) => {
+                    // Skip if no exercises
+                    if (!rec.exercises) return;
+                    
+                    const exerciseIds = rec.exercises.split('|');
+                    const card = document.createElement('div');
+                    card.className = 'exercise-card';
+                    
+                    card.innerHTML = `
+                        <div class="exercise-header">
+                            <h3>${rec.name}</h3>
+                            <div class="exercise-count">${exerciseIds.length} exercises</div>
+                        </div>
+                        <div class="exercise-body">
+                            <h2 class="exercise-title">${rec.timeOfDay} Routine</h2>
+                            <p class="exercise-description">${rec.description}</p>
+                            <ul class="exercise-list">
+                                ${exerciseIds.map((exId, i) => {
+                                    const ex = getExerciseById(exId);
+                                    if (!ex) return '';
+                                    
+                                    const areas = ex.bodyAreas ? ex.bodyAreas.split('|').map(area => 
+                                        `<span class="area-tag">${formatAreaName(area)}</span>`
+                                    ).join('') : '';
+                                    
+                                    // Check if this exercise has been viewed
+                                    const viewedClass = viewedExercises.includes(ex.exerciseId) ? 'viewed' : '';
+                                    
+                                    return `
+                                        <li class="exercise-item">
+                                            <div class="exercise-number">${i+1}</div>
+                                            <div class="exercise-detail">
+                                                <div class="exercise-name ${viewedClass}" 
+                                                    data-id="${ex.exerciseId}">${ex.name}</div>
+                                                <div class="exercise-info">
+                                                    <span>${ex.difficulty}</span>
+                                                    <span>${ex.duration} seconds</span>
+                                                </div>
+                                                <div class="exercise-area-tags">
+                                                    ${areas}
+                                                </div>
+                                            </div>
+                                        </li>
+                                    `;
+                                }).join('')}
+                            </ul>
+                            <button type="button" class="start-routine-btn" onclick="startRoutine('${rec.stretchId}', '${exerciseIds.join('|')}', '${rec.name.replace(/['\\]/g, '\\$&')}', '${rec.description.replace(/['\\]/g, '\\$&')}')">
+                                <span class="icon">▶️</span> Start Routine
+                            </button>
+                        </div>
+                    `;
+                    
+                    routineFlow.appendChild(card);
+                });
+                
+                // Add event listener to start routine button
+                document.getElementById('startRoutine').addEventListener('click', function() {
+                    const routineType = userPrefs.routineDuration?.label || 'personalized';
+                    const message = `
+                        Starting your ${routineType} guided routine.
+                        
+                        In a complete application, this would launch an interactive
+                        guided experience with:
+                        
+                        • Timed guidance through each exercise
+                        • Visual demonstrations and instructions
+                        • Progress tracking
+                        • Voice-guided prompts
+                        
+                        This feature is coming soon!
+                    `;
+                    alert(message);
+                });
+                
+            } catch (error) {
+                console.error('Error loading routine:', error);
+                document.getElementById('routineFlow').innerHTML = `
+                    <div class="error-message">
+                        <p>Sorry, there was an error loading your routine. Please try again later.</p>
+                    </div>
+                `;
+            }
+        });
+        
+        // Helper function to format area names
+        function formatAreaName(areaId) {
+            if (!areaId) return '';
+            
+            // Convert camelCase or dash-case ID to display name
+            return areaId
+                .replace(/([A-Z])/g, ' $1') // Insert space before capital letters
+                .replace(/-/g, ' ') // Replace dashes with spaces
+                .split(' ')
+                .filter(word => word.length > 0) // Remove empty strings
+                .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()) // Capitalize first letter of each word
+                .join(' ');
+        }
+
+        // Add this to the document ready function in the type="module" script
+        console.log('Document ready, initializing routine page...');
+        console.log('User preferences:', userPrefs);
+        console.log('Recommendations:', recommendations);
+        console.log('All exercises:', allExercises);
+
+        // Adding some console.log to show when DOM is fully loaded
+        window.addEventListener('load', function() {
+            console.log('Window fully loaded, all resources available');
+            console.log('allExercisesData in global scope:', window.allExercisesData);
+        });
+    </script>
+</body>
+</html> 
